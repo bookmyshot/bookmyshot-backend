@@ -1,5 +1,5 @@
 
-class SlotManager{
+export class SlotManager{
 
     constructor(){
 

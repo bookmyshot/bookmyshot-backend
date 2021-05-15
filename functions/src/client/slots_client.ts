@@ -1,5 +1,5 @@
 
-class SlotClient{
+export class SlotClient{
 
     constructor(){
 

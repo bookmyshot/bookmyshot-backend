@@ -1,16 +1,19 @@
 import * as functions from "firebase-functions";
+import { SlotManager } from "./manager/slots_manager";
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
 export const getSlots = functions.https.onRequest((request, response) => {
 
     functions.logger.info("Request: ", request);
 
-    if(request.query['state'] && request.query['district'])
-    {
+    if (request.params['state'] && request.params['district']) {
 
+        let slotManager: SlotManager = new SlotManager();
+
+        let data = slotManager.getSlots(request.params['state'] , request.params['district'] )
+        response.send(data);
     }
-    
-    response.send("Hello from Firebase!");
+    else {
+        response.end("Invalid parame");
+    }
+
 });
